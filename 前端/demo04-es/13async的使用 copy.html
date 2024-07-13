@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="width=device-width,initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+    <body>
+        <script>
+            
+            async function aaa () {
+                return 10
+            }
+
+            let promise = aaa();
+            promise.then(
+                function(value){
+                    console.log(`success : ${value}`)
+                }
+            )
+
+        </script>
+    </body>
+
+
+
+
+</html>

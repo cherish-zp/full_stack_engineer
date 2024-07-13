@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="width=device-width,initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+    <body>
+        <script>
+            let p1 = new Promise(function(resolve,reject){
+
+                // 调用resolve 方法 , 则表示返回一个resolve状态的promise
+                //resolve()
+                //resolve("succes message")
+                //调用 reject方法 则表示返回的是一个reject状态的promise
+                resolve("p1 success ")
+            })
+
+
+            let p2  = Promise.resolve("p2 success message")
+            
+            let p3 = Promise.reject("p3 fail")
+            let p4 = Promise.reject("p4 fail")
+
+            console.log(1)
+
+
+            let promiseAll = Promise.all([p1,p2,p3,p4])  
+
+            promiseAll.then(
+                function(value){
+                    console.log('成功'+value)
+                }
+            ) .catch (
+                function (error) {
+                    if (error ) {
+                        console.log('失败'  + error );
+                    }
+                    
+                }
+            )
+
+            console.log(2)
+
+        </script>
+    </body>
+
+
+
+
+</html>
