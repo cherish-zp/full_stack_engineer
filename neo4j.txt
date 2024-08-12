@@ -1,0 +1,40 @@
+=========================================
+emp :   nodename
+Employee   labName 真正的类型,类名
+create (emp:Employee{id:1,name:"david",sal:1500}) 
+create (emp:Employee{id:2,name:"张鹏",sal:2500}) 
+create (dept:Dept{id:1,name:"Accounting" , location:"shangHai"})
+
+create (dept:Dept{id:2,name:"Resrarch" , location:"beijing"})
+=========================================
+MATCH (n:Dept) RETURN n.name="Accounting"  LIMIT 25
+MATCH (n:Dept) RETURN n LIMIT 25
+MATCH (n:Dept) RETURN n.id , n.name LIMIT 25
+=========================================
+#建立关系
+Match( emp:Employee) , ( dept:Dept) create ( emp )  - [  r:BELONG  {enterTime:"2022-10-10"}   ] -> ( dept )   
+#根据属性关系建立关系 
+Match( emp:Employee) , ( dept:Dept) where emp.name="张鹏" and dept.name="Accounting" create ( emp )  - [  r:BELONG  {enterTime:"2022-10-10"}   ] -> ( dept )    
+
+#查询关系
+Match( emp:Employee) , ( dept:Dept) RETURN emp,dept 
+
+Match(emp:Employee) -[b:BELONG] ->(dept:Dept) where dept.name="Accounting" return emp,b,dept
+#删除关系
+Match(emp:Employee) -[b:BELONG] ->(dept:Dept) where dept.name="Accounting" delete b 
+#删除节点
+Match(emp:Employee{id:2} ) delete emp 
+#排序
+Match( emp:Employee) , ( dept:Dept) RETURN emp,dept   order by emp.sal asc  limit 100
+#修改
+Match(n:Employee) where n.id=2 set n.sal=3500 
+# 清空节点
+Match(n) detach delete n 
+================================================================
+create(usr:User{id:1,name:"秦烩"})
+create(usr:User{id:2,name:"岳飞"})
+create(usr:User{id:3,name:"完颜洪烈"})
+=====
+建立关系
+
+
