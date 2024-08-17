@@ -35,6 +35,7 @@ create(usr:User{id:1,name:"秦烩"})
 create(usr:User{id:2,name:"岳飞"})
 create(usr:User{id:3,name:"完颜洪烈"})
 =====
-建立关系
-
+删除自带的节点id 
+MATCH (n) WHERE id(n) = <node_id_to_delete> DELETE n
+=====
 
